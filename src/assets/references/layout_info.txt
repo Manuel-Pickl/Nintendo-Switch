@@ -1,0 +1,5 @@
+header_height = 19%
+games_height = 48%
+cover_height = 33%
+apps_height = 23%
+footer_height = 10%
