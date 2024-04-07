@@ -10,6 +10,7 @@ const Game = ({
     title, isSelected, select
 }: GameProps) => {
     const covers: string = "public/covers";
+    
     return (
         <div className={`Game ${isSelected}`}>
             <div className="title-container">

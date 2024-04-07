@@ -1,4 +1,7 @@
 .Apps {
     height: 23%;
-    background-color: red;
+    display: flex;
+    gap: 3vh;
+    place-content: center;
+    align-items: center;
 }
