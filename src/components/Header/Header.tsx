@@ -3,8 +3,8 @@ import "./Header.scss"
 
 const Header = () => {
     const users = [
-        "kass",
-        "kk"
+        "Kass",
+        "K.K."
     ]
 
     return (
