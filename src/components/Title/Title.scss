@@ -10,7 +10,7 @@
         
 
         &.top {
-            bottom: 108%;
+            bottom: 107%;
         }
         
         &.bottom {
@@ -19,7 +19,7 @@
 
         &.big {
             max-width: 60vh;
-            font-size: 3.6vh;
+            font-size: 4.2vh;
         }
 
         &.small {
@@ -36,7 +36,7 @@
             &>.title-container {
                 &>.title {
                     display: inline-block;
-                    animation: title-scroll 6s infinite linear;
+                    animation: title-scroll 12s infinite linear;
         
                     &>:first-child {
                         margin-right: 20vh;
@@ -48,7 +48,7 @@
 }
 
 @keyframes title-scroll {
-    20% {
+    14% {
         transform: translateX(0%);
     }
     100% {

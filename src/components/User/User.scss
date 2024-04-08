@@ -1,0 +1,26 @@
+.User {
+    &>.bubble {
+        --size: 9vh;
+        width: var(--size);
+        height: var(--size);
+        border: solid 2px white;
+        border-radius: 100vh;
+        background-color: lightblue;
+        box-shadow: 0 0 0.8vh -0.4vh grey;
+
+        &>img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100vh;
+        }
+    }
+
+    &.true {
+        &>.bubble {
+            outline-style: solid;
+            outline-width: 0.6vh;
+            animation: outline-color 1s infinite linear;
+            scale: 105%;
+        }
+    }
+}

@@ -1,8 +1,9 @@
 .Game {
     &>.cover {
         position: relative;
-        width: 33vh;
-        height: 33vh;
+        --size: 36vh;
+        width: var(--size);
+        height: var(--size);
         
         &>img {
             width: 100%;

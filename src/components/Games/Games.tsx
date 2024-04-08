@@ -5,9 +5,9 @@ import { useDrag } from 'react-use-gesture';
 
 const Games = () => {
     const games = [
+        "The Legend of Zelda Breath of the Wild",
         "Mario Kart 8 Deluxe",
         "Animal Crossing New Horizons",
-        "Zelda Breath of the Wild",
         "Human Fall Flat",
         "Super Smash Brothers Ultimate",
         "Gang Beasts",

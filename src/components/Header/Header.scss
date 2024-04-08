@@ -1,4 +1,9 @@
 .Header {
-    height: 19%;
-    background-color: lightsalmon;
+    height: 19vh;
+    padding: 6vh 0 0 8vh;
+
+    &>.users {
+        display: flex;
+        gap: 1.5vh;
+    }
 }
