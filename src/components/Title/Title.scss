@@ -1,0 +1,46 @@
+.Title {
+    // from parent:
+    // --font-size
+
+    &>.title-container {
+        position: absolute;
+        left: 50%;
+        translate: -50% 0;
+        visibility: hidden;
+        overflow: hidden;
+        color: #22B7BD;
+        text-wrap: nowrap;
+        
+
+        &.top {
+            bottom: 108%;
+        }
+        
+        &.bottom {
+            top: 108%;
+        }
+
+        &.big {
+            max-width: 180%;
+            font-size: 3.6vh;
+        }
+
+        &.small {
+            font-size: 3vh;
+        }
+
+        &>.title {
+            // animation: title-scroll 6s infinite linear;
+
+            &>:first-child {
+                // margin-right: 20vh;
+            }
+        }
+    }
+
+    &.true {
+        &>.title-container {
+            visibility: visible;
+        }
+    }
+}

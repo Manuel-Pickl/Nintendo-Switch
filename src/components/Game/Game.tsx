@@ -1,26 +1,23 @@
+import { useReactiveVar } from "@apollo/client";
 import "./Game.scss"
+import { selectedId } from "../../globalVariables";
+import Title from "../Title/Title";
 
 interface GameProps {
     title: string;
-    isSelected: boolean;
-    select: (id: string) => void;
 }
 
 const Game = ({
-    title, isSelected, select
+    title
 }: GameProps) => {
     const covers: string = "public/covers";
-    
+    const selectedIdValue = useReactiveVar(selectedId);
+
     return (
-        <div className={`Game ${isSelected}`}>
-            <div className="title-container">
-                <div className="title">
-                    <span>{title}</span>
-                    {/* <span>{title}</span> */}
-                </div>
-            </div>
-            <div className="cover" onClick={() => select(title)}>
-                <img src={`${covers}/${title}.jpg`} alt={title} />
+        <div className={`Game ${selectedIdValue == title}`}>
+            <div className="cover" onClick={() => selectedId(title)}>
+                <Title title={title} visible={selectedIdValue == title}/>
+                <img src={`${covers}/${title}.jpg`} alt={title} draggable="false"/>
             </div>
         </div>
     );

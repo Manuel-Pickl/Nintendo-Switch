@@ -1,65 +1,45 @@
 .Systemapp {
-    position: relative;
-    height: 9vh;
-    aspect-ratio: 1;
-    background-color: white;
-    border-radius: 100%;
-
-    &>.title-container {
-        position: absolute;
-        top: 108%;
-        left: 50%;
-        translate: -50% 0;
-        max-width: 180%;
-        visibility: hidden;
-        color: #22B7BD;
-        text-wrap: nowrap;
-        font-size: 3vh;
-    }
-    
-    &>.icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
-        height: 52%;
+    .bubble {
+        position: relative;
+        height: 9vh;
         aspect-ratio: 1;
-        
-        &>img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    @keyframes outline-color {
-        0% {
-            outline-color: #10C5C1;
-        }
-        50% {
-            outline-color: #5DF9DE;
-        }
-        100% {
-            outline-color: #10C5C1;
-        }
-    }
-}
-
-.true {
-    &>.title-container {
-        visibility: visible;
-
-        .title {
-            // animation: title-scroll 6s infinite linear;
-
-            &>:first-child {
-                // margin-right: 20vh;
+        background-color: white;
+        border-radius: 100%;
+            
+        &>.icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            height: 52%;
+            aspect-ratio: 1;
+            
+            &>img {
+                width: 100%;
+                height: 100%;
             }
         }
     }
 
-        outline-style: solid;
-        outline-width: 0.5vh;
-        animation: outline-color 1s infinite linear;
+    &.true {
+        &>.bubble {
+            outline-style: solid;
+            outline-width: 0.5vh;
+            animation: outline-color 1s infinite linear;
+        }
+    }
+}
+
+@keyframes outline-color {
+    0% {
+        outline-color: #10C5C1;
+    }
+    50% {
+        outline-color: #5DF9DE;
+    }
+    100% {
+        outline-color: #10C5C1;
+    }
 }
 
 @keyframes title-scroll {

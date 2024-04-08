@@ -15,7 +15,7 @@ const Apps = () => {
     return (
         <div className="Apps">
             {apps.map(app => 
-                <Systemapp title={app}/>
+                <Systemapp title={app} key={app}/>
             )}
         </div>
     );

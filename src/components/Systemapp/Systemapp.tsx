@@ -1,3 +1,6 @@
+import { useReactiveVar } from "@apollo/client";
+import { selectedId } from "../../globalVariables";
+import Title from "../Title/Title";
 import "./Systemapp.scss"
 
 interface SystemappProps {
@@ -8,18 +11,15 @@ const Systemapp = ({
     title,
 }: SystemappProps) => {
     const systemapps: string = "systemapps";
+    const selectedIdValue = useReactiveVar(selectedId);
 
     return (
-        <div className={`Systemapp true`}>
-            <div className="title-container">
-                <div className="title">
-                    <span>{title}</span>
+        <div className={`Systemapp ${selectedIdValue == title}`}>
+            <div className="bubble" onClick={() => selectedId(title)}>
+                <div className="icon">
+                    <img src={`${systemapps}/${title}.png`} alt={title} draggable="false" />
                 </div>
-            </div>
-            <div className="icon"
-            // onClick={() => select(title)}
-            >
-                <img src={`${systemapps}/${title}.png`} alt={title} />
+                <Title title={title} visible={selectedIdValue == title} position="bottom" size="small"/>
             </div>
         </div>
     );

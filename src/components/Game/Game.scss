@@ -1,24 +1,8 @@
 .Game {
-    position: relative;
-    height: 33vh;
-    aspect-ratio: 1;
-
-    &>.title-container {
-        position: absolute;
-        bottom: 108%;
-        left: 50%;
-        translate: -50% 0;
-        max-width: 180%;
-        visibility: hidden;
-        overflow: hidden;
-        color: #22B7BD;
-        text-wrap: nowrap;
-        font-size: 3.6vh;
-    }
-    
     &>.cover {
-        height: 100%;
-        aspect-ratio: 1;
+        position: relative;
+        width: 33vh;
+        height: 33vh;
         
         &>img {
             width: 100%;
@@ -26,37 +10,25 @@
         }
     }
 
-    @keyframes outline-color {
-        0% {
-            outline-color: #10C5C1;
-        }
-        50% {
-            outline-color: #5DF9DE;
-        }
-        100% {
-            outline-color: #10C5C1;
+    &.true {
+        &>.cover {
+            outline-style: solid;
+            outline-width: 1vh;
+            outline-offset: 0.8vh;
+            animation: outline-color 1s infinite linear;
         }
     }
 }
 
-.true {
-    &>.title-container {
-        visibility: visible;
-
-        .title {
-            // animation: title-scroll 6s infinite linear;
-
-            &>:first-child {
-                // margin-right: 20vh;
-            }
-        }
+@keyframes outline-color {
+    0% {
+        outline-color: #10C5C1;
     }
-
-    &>.cover {
-        outline-style: solid;
-        outline-width: 1vh;
-        outline-offset: 0.8vh;
-        animation: outline-color 1s infinite linear;
+    50% {
+        outline-color: #5DF9DE;
+    }
+    100% {
+        outline-color: #10C5C1;
     }
 }
 
