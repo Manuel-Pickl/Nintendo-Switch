@@ -1,8 +1,12 @@
 .Games {
-    height: 48%;
-    padding-bottom: 3vh;
-    margin-left: 15vh;
-    display: flex;
-    gap: 2.4vh;
-    align-items: end;
+    height: 48vh;
+    display: grid;
+
+    .game-list {
+        padding-inline: 12vh;
+        display: flex;
+        gap: 1.6vh;
+        align-items: end;
+        // transition: translate 0.3s;
+    }
 }

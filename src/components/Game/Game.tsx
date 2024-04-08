@@ -5,17 +5,27 @@ import Title from "../Title/Title";
 
 interface GameProps {
     title: string;
+    dragging: boolean;
 }
 
 const Game = ({
-    title
+    title,
+    dragging,
 }: GameProps) => {
-    const covers: string = "public/covers";
+    const covers: string = "covers";
     const selectedIdValue = useReactiveVar(selectedId);
+
+    function handleClick(e) {
+        if (dragging) {
+            return;
+        }
+        
+        selectedId(title);
+    }
 
     return (
         <div className={`Game ${selectedIdValue == title}`}>
-            <div className="cover" onClick={() => selectedId(title)}>
+            <div className="cover" onClick={handleClick}>
                 <Title title={title} visible={selectedIdValue == title}/>
                 <img src={`${covers}/${title}.jpg`} alt={title} draggable="false"/>
             </div>

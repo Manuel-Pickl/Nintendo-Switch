@@ -1,7 +1,4 @@
 .Title {
-    // from parent:
-    // --font-size
-
     &>.title-container {
         position: absolute;
         left: 50%;
@@ -21,26 +18,40 @@
         }
 
         &.big {
-            max-width: 180%;
+            max-width: 60vh;
             font-size: 3.6vh;
         }
 
         &.small {
             font-size: 3vh;
         }
-
-        &>.title {
-            // animation: title-scroll 6s infinite linear;
-
-            &>:first-child {
-                // margin-right: 20vh;
-            }
-        }
     }
 
-    &.true {
+    &.visible {
         &>.title-container {
             visibility: visible;
         }
+
+        &.scroll {
+            &>.title-container {
+                &>.title {
+                    display: inline-block;
+                    animation: title-scroll 6s infinite linear;
+        
+                    &>:first-child {
+                        margin-right: 20vh;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes title-scroll {
+    20% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(calc(-50% - 10vh));
     }
 }
