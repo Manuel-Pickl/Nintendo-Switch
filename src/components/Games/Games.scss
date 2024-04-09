@@ -1,5 +1,5 @@
 .Games {
-    height: 48vh;
+    height: 44vh;
     display: grid;
 
     .game-list {
@@ -7,6 +7,5 @@
         display: flex;
         gap: 1.6vh;
         align-items: end;
-        // transition: translate 0.3s;
     }
 }
