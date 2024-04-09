@@ -16,13 +16,14 @@ const Title = ({
 }: TitleProps) => {
     const titleRef = useRef<HTMLDivElement>(null);
     const [scrollTitle, setScollTitle] = useState<boolean>(false);
+    const maxWidthInVh = 55;
 
     useEffect(() => {
         if (titleRef.current) {
             const titleWidth = titleRef.current.offsetWidth;
-            const maxWidth =  window.innerHeight * 0.6;
+            const maxWidth =  window.innerHeight / 100 * maxWidthInVh;
+            
             const titleExceedsLimit = titleWidth >= maxWidth;
-
             if (titleExceedsLimit) {
                 setScollTitle(true);
             }
@@ -30,7 +31,8 @@ const Title = ({
     }, [title]); 
 
     return (
-        <div className={`Title ${visible && "visible"} ${scrollTitle && "scroll"}`}>
+        <div className={`Title ${visible && "visible"} ${scrollTitle && "scroll"}`} style={{"--max-width": `${maxWidthInVh}vh` } as React.CSSProperties}
+        >
             <div className={`title-container ${position} ${size}`}>
                 <div className="title" ref={titleRef}>
                     <span>{title}</span>

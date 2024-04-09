@@ -1,4 +1,7 @@
 .Title {
+    // from parent:
+    // --max-width
+    
     &>.title-container {
         position: absolute;
         left: 50%;
@@ -17,7 +20,7 @@
         }
 
         &.big {
-            max-width: 55vh;
+            max-width: var(--max-width);
             font-size: 4.2vh;
         }
 

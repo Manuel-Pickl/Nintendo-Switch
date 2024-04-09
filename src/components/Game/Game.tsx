@@ -4,7 +4,7 @@ import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import { SoundService } from "../../services/SoundService";
 import { Sound } from "../../types/Sound";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface GameProps {
     title: string;

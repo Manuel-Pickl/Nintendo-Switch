@@ -53,7 +53,7 @@
                     content: "";
                     position: absolute;
                     inset: 0;
-                    background-image: url("../../../public/systemapps/AlbumAfter.png");
+                    background-image: url("systemapps/AlbumAfter.png");
                     background-size: contain;
                     transform-origin: left bottom;
                     animation: AlbumAfter 1s;
@@ -74,7 +74,7 @@
                     content: "";
                     position: absolute;
                     inset: 0;
-                    background-image: url("../../../public/systemapps/Standby-Mode.png");
+                    background-image: url("systemapps/Standby-Mode.png");
                     background-size: contain;
                     animation: Standby-ModeAfter var(--click-duration);
                 }
