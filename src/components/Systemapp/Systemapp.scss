@@ -1,4 +1,7 @@
 .Systemapp {
+    // from parent:
+    // --click-duration
+
     .bubble {
         position: relative;
         --size: 12vh;
@@ -23,11 +26,108 @@
         }
     }
 
-    &.true {
+    &.selected {
         &>.bubble {
             outline-style: solid;
             outline-width: 0.6vh;
             animation: outline-color 1s infinite linear;
         }
+    }
+
+    &.clicked {
+        &>.bubble {
+            &>.News {
+                transform-origin: bottom;
+                animation: News var(--click-duration);
+            }
+
+            &>.Nintendo-eShop {
+                animation: Shop var(--click-duration);
+            }
+
+            &>.Album {
+                transform-origin: left bottom;
+                animation: Album 1s;
+                
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background-image: url("../../../public/systemapps/AlbumAfter.png");
+                    background-size: contain;
+                    transform-origin: left bottom;
+                    animation: AlbumAfter 1s;
+                }
+            }
+
+            &>.Controller {
+                transform-origin: 35% 65%;
+                animation: Controller var(--click-duration);
+            }
+
+            &>.System-Settings {
+                animation: System-Settings var(--click-duration);
+            }
+            
+            &>.Standby-Mode {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background-image: url("../../../public/systemapps/Standby-Mode.png");
+                    background-size: contain;
+                    animation: Standby-ModeAfter var(--click-duration);
+                }
+            }
+        }
+    }
+}
+
+@keyframes News {
+    50% {
+        scale: 1.1;
+    }
+}
+
+@keyframes Shop {
+    50% {
+        transform: translateY(-1vh);
+    }
+}
+
+@keyframes Album {
+    10%, 90% {
+        rotate: -10deg;
+    }
+}
+@keyframes AlbumAfter {
+    10%, 90% {
+        rotate: 20deg;
+    }
+}
+
+@keyframes Controller {
+    25% {
+        rotate: -15deg;
+    }
+    75% {
+        rotate: 15deg;
+    }
+}
+
+@keyframes System-Settings {
+    50% {
+        scale: 1.15;
+    }
+    100% {
+        rotate: 45deg;
+    }
+}
+
+@keyframes Standby-ModeAfter {
+    100% {
+        scale: 1.5;
+        opacity: 0.25;
+
     }
 }

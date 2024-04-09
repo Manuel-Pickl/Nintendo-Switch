@@ -1,9 +1,17 @@
 .Game {
+    // from parent:
+    // --click-duration
+
+    position: relative;
+
     &>.cover {
         position: relative;
         --size: 36vh;
         width: var(--size);
         height: var(--size);
+        outline-width: 0.8vh;
+        outline-offset: 0.4vh;
+        transition: scale var(--click-duration);
         
         &>img {
             width: 100%;
@@ -11,12 +19,16 @@
         }
     }
 
-    &.true {
+    &.selected {
         &>.cover {
             outline-style: solid;
-            outline-width: 0.8vh;
-            outline-offset: 0.4vh;
             animation: outline-color 1s infinite linear;
+        }
+    }
+
+    &.clicked {
+        &>.cover {
+            scale: 0.95;
         }
     }
 }

@@ -30,7 +30,7 @@ const Title = ({
     }, [title]); 
 
     return (
-        <div className={`Title ${visible ? "visible" : ""} ${scrollTitle ? "scroll" : ""}`}>
+        <div className={`Title ${visible && "visible"} ${scrollTitle && "scroll"}`}>
             <div className={`title-container ${position} ${size}`}>
                 <div className="title" ref={titleRef}>
                     <span>{title}</span>

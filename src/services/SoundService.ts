@@ -1,9 +1,5 @@
 import { Sound } from "../types/Sound";
-import clickSoundPath from "../assets/sounds/Klick.mp3"
-
-const soundMapping: Record<Sound, string> = {
-  [Sound.GameClick]: clickSoundPath,
-};
+import { soundMapping } from "../types/SoundMapping";
 
 export class SoundService {
   private static audioRefs: Partial<Record<Sound, HTMLAudioElement>> = {};

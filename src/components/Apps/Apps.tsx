@@ -5,10 +5,10 @@ const Apps = () => {
     const apps = [
         // "Nintendo Switch Online",
         "News",
-        "Nintendo eShop",
+        "Nintendo-eShop",
         "Album",
         "Controller",
-        "System Settings",
+        "System-Settings",
         "Standby-Mode",
     ];
 
