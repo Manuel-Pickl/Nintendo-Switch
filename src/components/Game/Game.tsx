@@ -1,7 +1,9 @@
 import { useReactiveVar } from "@apollo/client";
 import "./Game.scss"
-import { selectedId } from "../../globalVariables";
+import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
+import { SoundService } from "../../services/SoundService";
+import { Sound } from "../../types/Sound";
 
 interface GameProps {
     title: string;
@@ -15,11 +17,12 @@ const Game = ({
     const covers: string = "covers";
     const selectedIdValue = useReactiveVar(selectedId);
 
-    function handleClick(e) {
+    function handleClick() {
         if (dragging) {
             return;
         }
         
+        SoundService.playSound(Sound.GameClick);
         selectedId(title);
     }
 

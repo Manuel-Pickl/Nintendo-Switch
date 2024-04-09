@@ -1,5 +1,5 @@
 import { useReactiveVar } from "@apollo/client";
-import { selectedId } from "../../globalVariables";
+import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import "./Systemapp.scss"
 

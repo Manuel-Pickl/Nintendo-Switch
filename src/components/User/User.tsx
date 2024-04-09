@@ -1,6 +1,6 @@
 import { useReactiveVar } from "@apollo/client";
 import "./User.scss";
-import { selectedId } from "../../globalVariables";
+import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 
 interface UserProps {
