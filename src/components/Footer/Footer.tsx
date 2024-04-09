@@ -1,9 +1,14 @@
 import "./Footer.scss"
+import switchIcon from "../../assets/icons/switch.png"
 
 const Footer = () => {
     return (
         <div className="Footer">
-            Footer
+            <div className="controllers">
+                <div className="icon">
+                    <img src={switchIcon} alt="switch" />
+                </div>
+            </div>
         </div>
     );
 }
