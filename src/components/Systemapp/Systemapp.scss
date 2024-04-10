@@ -48,19 +48,45 @@
 
     &.clicked {
         &>.bubble {
+            &>* {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 100vh;
+                    scale: 0;
+                    animation: bubbleFadeOut 500ms;
+                }
+            }
+
             &>.News {
                 transform-origin: bottom;
                 animation: News var(--click-duration);
+
+                &::before {
+                    // background-color: hsla(0, 100%, 65%, 0.1);
+                    background-color: hsla(357, 72%, 55%, 0.1);
+                }
             }
 
             &>.Nintendo-eShop {
                 animation: Shop var(--click-duration);
+
+                &::before {
+                    // background-color: hsla(60, 100%, 40%, 0.15);
+                    background-color: hsla(38, 95%, 45%, 0.1);
+                }
             }
 
             &>.Album {
                 transform-origin: left bottom;
                 animation: Album 1s;
                 
+                &::before {
+                    transform-origin: 45% 44%;
+                    background-color: hsla(216, 83%, 47%, 0.1);
+                }
+
                 &::after {
                     transform-origin: left bottom;
                     animation: AlbumAfter 1s;
@@ -70,13 +96,25 @@
             &>.Controller {
                 transform-origin: 35% 65%;
                 animation: Controller var(--click-duration);
+
+                &::before {
+                    background-color: hsla(165, 2%, 41%, 0.1);
+                }
             }
 
             &>.System-Settings {
                 animation: System-Settings var(--click-duration);
+
+                &::before {
+                    background-color: hsla(165, 2%, 41%, 0.1);
+                }
             }
             
             &>.Standby-Mode {
+                &::before {
+                    background-color: hsla(165, 2%, 41%, 0.1);
+                }
+                
                 &::after {
                     content: "";
                     position: absolute;
@@ -87,6 +125,19 @@
                 }
             }
         }
+    }
+}
+@keyframes bubbleFadeOut {
+    25% {
+        scale: 2.5;
+    }
+    80% {
+        opacity: 1;
+        scale: 2.5;
+    }
+    100% {
+        scale: 2;
+        opacity: 0;
     }
 }
 

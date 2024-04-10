@@ -56,10 +56,11 @@ const Systemapp = ({
 
         setClicked(true);
 
-        const animationDelay: number = title == "Album" ? 1000 : clickAnimationDurationInMs;
+        // const animationDelayInMs: number = title == "Album" ? 1000 : clickAnimationDurationInMs;
+        const animationDelayInMs: number = 1000;
         setTimeout(() => {
             setClicked(false);
-        }, animationDelay);
+        }, animationDelayInMs);
     }
 
     return (
