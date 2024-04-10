@@ -3,9 +3,13 @@
 .User {
     // from parent:
     // --click-duration
+    // --avatar
 
-    &>.bubble {
+    position: relative;
+
+    &>.bubble {        
         --size: 9vh;
+        position: relative;
         width: var(--size);
         height: var(--size);
         border: solid 2px white;
@@ -35,6 +39,16 @@
             animation:
                 changeOutlineColor 1s infinite linear,
                 shrinkOnClick var(--click-duration) linear;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: var(--avatar);
+                background-size: contain;
+                border-radius: 100vh;
+                animation: fadeOut var(--click-duration) linear;
+            }
         }
     }
 }

@@ -5,14 +5,14 @@ import { vhToPx } from "../../services/UnitService";
 interface TitleProps {
     title: string;
     visible: boolean;
-    position?: "top" | "bottom";
+    target: "user" | "game" | "app";
     size?: "big" | "small";
 }
 
 const Title = ({
     title,
     visible,
-    position = "top",
+    target,
     size = "big",
 }: TitleProps) => {
     const titleRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ const Title = ({
     return (
         <div className={`Title ${visible && "visible"} ${scrollTitle && "scroll"}`} style={{"--max-width": `${maxWidthInVh}vh` } as React.CSSProperties}
         >
-            <div className={`title-container ${position} ${size}`}>
+            <div className={`title-container ${target} ${size}`}>
                 <div className="title" ref={titleRef}>
                     <span>{title}</span>
                     {scrollTitle &&

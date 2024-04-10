@@ -25,7 +25,6 @@ const Games = () => {
     const offsetMax = 0;
     
     const [dragging, setDragging] = useState(false);
-    const dragThreshold = 10;
     
     useEffect(() => {
         const screenWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -37,7 +36,7 @@ const Games = () => {
 
     const bind = useDrag(({ down, movement: [mouseX], memo = offset }) => {
         const currentDragDistance = Math.abs(mouseX);
-        if (currentDragDistance > dragThreshold) {
+        if (currentDragDistance > 0) {
             requestAnimationFrame(() => setDragging(down));        
         }
 
@@ -85,7 +84,7 @@ const Games = () => {
 
     return (
         <div className="Games">
-            <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`, "--padding": `${paddingInVh}vh`} as React.CSSProperties}>
+            <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`, "--padding": `${paddingInVh}vh` } as React.CSSProperties}>
                 {games.map(game =>
                     <Game title={game} key={game} dragging={dragging} onClick={handleClick}/>
                 )}

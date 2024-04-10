@@ -60,7 +60,7 @@ const Game = ({
 
     return (
         <div className={`Game ${gameIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
-            <Title title={title} visible={gameIsSelected()}/>
+            <Title title={title} visible={gameIsSelected()} target="game" />
             <div className="cover" onClick={handleClick}>
                 <img src={`${covers}/${title}.jpg`} alt={title} draggable="false"/>
             </div>

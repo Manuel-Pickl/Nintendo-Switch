@@ -17,7 +17,7 @@ const User = ({
     const usersPath = "users"
 
     const [clicked, setClicked] = useState<boolean>(false);
-    const clickAnimationDurationInMs: number = 120;
+    const clickAnimationDurationInMs: number = 150;
 
     function userIsSelected(): boolean {
         const userIsSelected: boolean = selectedIdValue == user;
@@ -50,11 +50,11 @@ const User = ({
     }
 
     return (
-        <div className={`User ${userIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
+        <div className={`User ${userIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`, "--avatar": `url(${usersPath}/${user}.png)`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
                 <img src={`${usersPath}/${user}.png`} alt="user" />
-                <Title title={`Page of ${user}`} visible={userIsSelected()} position="bottom" size="small"/>
             </div>
+            <Title title={`Page of ${user}`} visible={userIsSelected()} target="user" size="small"/>
         </div>
     );
 }

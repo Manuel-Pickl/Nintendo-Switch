@@ -11,11 +11,13 @@
         color: #22B7BD;
         text-wrap: nowrap;
 
-        &.top {
+        &.user {
+            top: 10vh;
+        }
+        &.game {
             bottom: 37.8vh;
         }
-        
-        &.bottom {
+        &.app {
             top: 108%;
         }
 

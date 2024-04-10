@@ -17,7 +17,7 @@ const Systemapp = ({
     const selectedIdValue = useReactiveVar(selectedId);
 
     const [clicked, setClicked] = useState<boolean>(false);
-    const clickAnimationDurationInMs: number = 120;
+    const clickAnimationDurationInMs: number = 150;
 
     function appIsSelected(): boolean {
         const userIsSelected: boolean = selectedIdValue == title;
@@ -68,7 +68,7 @@ const Systemapp = ({
                 <div className={`icon ${title}`}>
                     <img src={`${systemapps}/${title}.png`} alt={title} draggable="false" />
                 </div>
-                <Title title={title} visible={selectedIdValue == title} position="bottom" size="small"/>
+                <Title title={title} visible={selectedIdValue == title} target="app" size="small"/>
             </div>
         </div>
     );
