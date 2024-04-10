@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Game from "../Game/Game";
 import "./Games.scss"
 import { useDrag } from 'react-use-gesture';
+import { vhToPx } from "../../services/UnitService";
 
 const Games = () => {
     const games = [
@@ -14,13 +15,17 @@ const Games = () => {
     ];
 
     const gameListRef = useRef<HTMLDivElement>(null);
-    
+
+    const paddingInVh = 15;
+    const padding = vhToPx(paddingInVh);
+    const scrollTransitionInMs = 150;
+
     const [offset, setOffset] = useState<number>(0);
     const [offsetMin, setOffsetMin] = useState<number>(0);
     const offsetMax = 0;
     
     const [dragging, setDragging] = useState(false);
-    const dragThreshold = 8;
+    const dragThreshold = 10;
     
     useEffect(() => {
         const screenWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -29,38 +34,6 @@ const Games = () => {
         
         setOffsetMin(newOffsetMin);
     }, [gameListRef]);
-    
-    // const [translationValue, setTranslationValue] = useState<number>(0);
-    // function handleClick(e: React.MouseEvent<HTMLElement>) {
-    //     if (!gameListRef?.current) {
-    //         return;
-    //     }
-
-    //     const game = e.currentTarget.getBoundingClientRect();
-    //     const screenWidth = window.innerWidth || document.documentElement.clientWidth;
-
-    //     const gameIsFullyVisible = (
-    //         game.left >= 0 &&
-    //         game.right <= screenWidth
-    //     );
-    //     if (gameIsFullyVisible) {
-    //         return;
-    //     }
-
-    //     const overflowRight = game.right > screenWidth;
-    //     var newTranslationValue: number;
-    //     const paddingInVh = 16;
-    //     const paddingInPx = window.innerHeight / 100 * paddingInVh;
-    //     const padding = overflowRight ? -paddingInPx : paddingInPx;
-    //     const gameOffset = overflowRight ? game.right : game.left;
-    //     const edge = overflowRight ? screenWidth : 0;
-
-    //     const translationValueDelta = edge - gameOffset + padding;
-    //     newTranslationValue = translationValue + translationValueDelta;
-
-    //     gameListRef.current.style.translate = `${newTranslationValue}px`;
-    //     setTranslationValue(newTranslationValue);
-    // }
 
     const bind = useDrag(({ down, movement: [mouseX], memo = offset }) => {
         const currentDragDistance = Math.abs(mouseX);
@@ -78,11 +51,41 @@ const Games = () => {
         return memo;
     });
 
+    const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (!gameListRef.current) {
+            return;
+        }
+
+        const clickedGame = event.currentTarget;
+        const gameRect = clickedGame.getBoundingClientRect();
+
+        const gameOverflowsLeft = gameRect.left < 0;
+        const gameOverflowsRight = gameRect.right > window.innerWidth;
+
+        gameListRef.current.style.transitionDuration = `${scrollTransitionInMs}ms`;
+        if (gameOverflowsLeft) {
+            const newOffset = offset - gameRect.left + padding
+            setOffset(newOffset);
+        }
+        else if (gameOverflowsRight) {
+            const newOffset = offset - (gameRect.right - window.innerWidth + padding);
+            setOffset(newOffset);
+        }
+
+        setTimeout(() => {
+            if (!gameListRef.current) {
+                return;
+            } 
+            
+            gameListRef.current.style.transitionDuration = "0ms";
+        }, scrollTransitionInMs);
+    };
+
     return (
         <div className="Games">
-            <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`}}>
+            <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`, "--padding": `${paddingInVh}vh`} as React.CSSProperties}>
                 {games.map(game =>
-                    <Game title={game} key={game} dragging={dragging}/>
+                    <Game title={game} key={game} dragging={dragging} onClick={handleClick}/>
                 )}
             </div>
         </div>

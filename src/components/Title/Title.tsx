@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Title.scss"
+import { vhToPx } from "../../services/UnitService";
 
 interface TitleProps {
     title: string;
@@ -21,7 +22,8 @@ const Title = ({
     useEffect(() => {
         if (titleRef.current) {
             const titleWidth = titleRef.current.offsetWidth;
-            const maxWidth =  window.innerHeight / 100 * maxWidthInVh;
+            const maxWidth =  vhToPx(maxWidthInVh);
+
             
             const titleExceedsLimit = titleWidth >= maxWidth;
             if (titleExceedsLimit) {

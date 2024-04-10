@@ -1,9 +1,12 @@
 .Games {
+    // from parent:
+    // --padding
+
     height: 44vh;
     display: grid;
 
     .game-list {
-        padding-inline: 15vh;
+        padding-inline: var(--padding);
         display: flex;
         gap: 1.6vh;
         align-items: end;

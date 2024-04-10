@@ -53,10 +53,12 @@ const Systemapp = ({
         SoundService.playSound(sound);
 
         setClicked(true);
+
+        const animationDelay: number = title == "Album" ? 1000 : clickAnimationDurationInMs;
         setTimeout(() => {
             // selectedId("");
             setClicked(false);
-        }, 1000);
+        }, animationDelay);
     }
 
     return (

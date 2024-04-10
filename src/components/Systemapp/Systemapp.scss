@@ -24,6 +24,16 @@
                 height: 100%;
             }
         }
+
+        &>.Album {
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("systemapps/AlbumAfter.png");
+                background-size: contain;
+            }
+        }
     }
 
     &.selected {
@@ -50,11 +60,6 @@
                 animation: Album 1s;
                 
                 &::after {
-                    content: "";
-                    position: absolute;
-                    inset: 0;
-                    background-image: url("systemapps/AlbumAfter.png");
-                    background-size: contain;
                     transform-origin: left bottom;
                     animation: AlbumAfter 1s;
                 }

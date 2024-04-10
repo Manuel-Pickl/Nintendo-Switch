@@ -9,11 +9,13 @@ import { useState } from "react";
 interface GameProps {
     title: string;
     dragging: boolean;
+    onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const Game = ({
     title,
     dragging,
+    onClick,
 }: GameProps) => {
     const covers: string = "covers";
     const selectedIdValue = useReactiveVar(selectedId);
@@ -26,7 +28,7 @@ const Game = ({
         return gameIsSelected;
     }
 
-    function handleClick() {
+    function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         if (dragging) {
             return;
         }
@@ -35,13 +37,14 @@ const Game = ({
             openGame();
         }
         else {
-            selectGame();
+            selectGame(event);
         }        
     }
 
-    function selectGame() {
+    function selectGame(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         SoundService.playSound(Sound.SelectGame);
         selectedId(title);
+        onClick(event);
     }
 
     function openGame() {
