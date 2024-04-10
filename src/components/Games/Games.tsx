@@ -52,6 +52,8 @@ const Games = () => {
     });
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        event.stopPropagation();
+
         if (!gameListRef.current) {
             return;
         }

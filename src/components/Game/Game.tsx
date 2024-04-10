@@ -29,6 +29,8 @@ const Game = ({
     }
 
     function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        event.stopPropagation();
+
         if (dragging) {
             return;
         }

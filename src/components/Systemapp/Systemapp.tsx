@@ -24,7 +24,9 @@ const Systemapp = ({
         return userIsSelected;
     }
     
-    function handleClick() {
+    function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        event.stopPropagation();
+
         if (appIsSelected()) {
             openApp();
         }
