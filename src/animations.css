@@ -1,0 +1,17 @@
+@keyframes changeOutlineColor {
+    0% {
+        outline-color: #10C5C1;
+    }
+    50% {
+        outline-color: #5DF9DE;
+    }
+    100% {
+        outline-color: #10C5C1;
+    }
+}
+  
+@keyframes shrinkOnClick {
+    50% {
+        scale: 0.95;
+    }
+}

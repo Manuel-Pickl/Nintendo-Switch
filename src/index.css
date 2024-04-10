@@ -16,17 +16,3 @@ body {
   overflow: hidden;
   background-color: #ECEBEC;
 }
-
-
-
-@keyframes outline-color {
-  0% {
-      outline-color: #10C5C1;
-  }
-  50% {
-      outline-color: #5DF9DE;
-  }
-  100% {
-      outline-color: #10C5C1;
-  }
-}

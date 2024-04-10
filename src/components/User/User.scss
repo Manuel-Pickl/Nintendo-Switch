@@ -1,4 +1,9 @@
+@import "../../animations.css";
+
 .User {
+    // from parent:
+    // --click-duration
+
     &>.bubble {
         --size: 9vh;
         width: var(--size);
@@ -7,6 +12,7 @@
         border-radius: 100vh;
         background-color: lightblue;
         box-shadow: 0 0 0.8vh -0.4vh grey;
+        transition: scale var(--click-duration);
 
         &>img {
             width: 100%;
@@ -19,8 +25,16 @@
         &>.bubble {
             outline-style: solid;
             outline-width: 0.6vh;
-            animation: outline-color 1s infinite linear;
+            animation: changeOutlineColor 1s infinite linear;
             scale: 105%;
+        }
+    }
+
+    &.clicked {
+        &>.bubble {
+            animation:
+                changeOutlineColor 1s infinite linear,
+                shrinkOnClick var(--click-duration) linear;
         }
     }
 }

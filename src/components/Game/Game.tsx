@@ -21,7 +21,7 @@ const Game = ({
     const selectedIdValue = useReactiveVar(selectedId);
 
     const [clicked, setClicked] = useState<boolean>(false);
-    const clickAnimationDurationInMs: number = 250;
+    const clickAnimationDurationInMs: number = 120;
 
     function gameIsSelected(): boolean {
         const gameIsSelected: boolean = selectedIdValue == title;
@@ -54,13 +54,12 @@ const Game = ({
 
         setClicked(true);
         setTimeout(() => {
-            // selectedId("");
             setClicked(false);
-        }, clickAnimationDurationInMs/2);
+        }, clickAnimationDurationInMs);
     }
 
     return (
-        <div className={`Game ${gameIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs/2}ms`} as React.CSSProperties}>
+        <div className={`Game ${gameIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
             <Title title={title} visible={gameIsSelected()}/>
             <div className="cover" onClick={handleClick}>
                 <img src={`${covers}/${title}.jpg`} alt={title} draggable="false"/>

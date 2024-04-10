@@ -1,3 +1,5 @@
+@import "../../animations.css";
+
 .Systemapp {
     // from parent:
     // --click-duration
@@ -40,7 +42,7 @@
         &>.bubble {
             outline-style: solid;
             outline-width: 0.6vh;
-            animation: outline-color 1s infinite linear;
+            animation: changeOutlineColor 1s infinite linear;
         }
     }
 

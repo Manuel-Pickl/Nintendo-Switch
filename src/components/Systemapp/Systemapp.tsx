@@ -17,7 +17,7 @@ const Systemapp = ({
     const selectedIdValue = useReactiveVar(selectedId);
 
     const [clicked, setClicked] = useState<boolean>(false);
-    const clickAnimationDurationInMs: number = 150;
+    const clickAnimationDurationInMs: number = 120;
 
     function appIsSelected(): boolean {
         const userIsSelected: boolean = selectedIdValue == title;
@@ -58,13 +58,12 @@ const Systemapp = ({
 
         const animationDelay: number = title == "Album" ? 1000 : clickAnimationDurationInMs;
         setTimeout(() => {
-            // selectedId("");
             setClicked(false);
         }, animationDelay);
     }
 
     return (
-        <div className={`Systemapp ${appIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs/2}ms`} as React.CSSProperties}>
+        <div className={`Systemapp ${appIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
                 <div className={`icon ${title}`}>
                     <img src={`${systemapps}/${title}.png`} alt={title} draggable="false" />

@@ -4,6 +4,7 @@ import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import { Sound } from "../../types/Sound";
 import { SoundService } from "../../services/SoundService";
+import { useState } from "react";
 
 interface UserProps {
     user: string;
@@ -14,6 +15,9 @@ const User = ({
 }: UserProps) => {
     const selectedIdValue = useReactiveVar(selectedId);
     const usersPath = "users"
+
+    const [clicked, setClicked] = useState<boolean>(false);
+    const clickAnimationDurationInMs: number = 120;
 
     function userIsSelected(): boolean {
         const userIsSelected: boolean = selectedIdValue == user;
@@ -38,10 +42,15 @@ const User = ({
 
     function openUser() {
         SoundService.playSound(Sound.OpenUser);
+
+        setClicked(true);
+        setTimeout(() => {
+            setClicked(false);
+        }, clickAnimationDurationInMs);
     }
 
     return (
-        <div className={`User ${userIsSelected() && "selected"}`}>
+        <div className={`User ${userIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
                 <img src={`${usersPath}/${user}.png`} alt="user" />
                 <Title title={`Page of ${user}`} visible={userIsSelected()} position="bottom" size="small"/>

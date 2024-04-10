@@ -1,3 +1,5 @@
+@import "../../animations.css";
+
 .Game {
     // from parent:
     // --click-duration
@@ -22,13 +24,15 @@
     &.selected {
         &>.cover {
             outline-style: solid;
-            animation: outline-color 1s infinite linear;
+            animation: changeOutlineColor 1s infinite linear;
         }
     }
 
     &.clicked {
         &>.cover {
-            scale: 0.95;
+            animation:
+                changeOutlineColor 1s infinite linear,
+                shrinkOnClick var(--click-duration) linear;
         }
     }
 }
