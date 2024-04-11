@@ -1,13 +1,17 @@
-import User from "../User/User";
+import User from "../User/User"
 import "./Header.scss"
 import wifi from "../../assets/icons/wifi.png"
 import battery from "../../assets/icons/battery.png"
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import { Id } from "../../types/Id"
+import kass from "../../assets/users/Kass.png"
+import kk from "../../assets/users/K.K..png"
+import { ElementData } from "../../types/ElementData"
 
 const Header = () => {
-    const users = [
-        "Kass",
-        "K.K."
+    const users: ElementData[] = [
+        new ElementData(Id.user1, "Kass", kass),
+        new ElementData(Id.user2, "K.K.", kk)
     ];
 
     const [currentTime, setCurrentTime] = useState(getTime());
@@ -35,7 +39,7 @@ const Header = () => {
         <div className="Header">
             <div className="users">
                 {users.map(user => {return(
-                    <User user={user} key={user}/>
+                    <User key={user.id} data={user}/>
                 )})}
             </div>
             <div className="console-info">

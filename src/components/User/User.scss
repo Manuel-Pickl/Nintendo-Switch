@@ -3,7 +3,7 @@
 .User {
     // from parent:
     // --click-duration
-    // --avatar
+    // --image
 
     position: relative;
 
@@ -44,7 +44,7 @@
                 content: "";
                 position: absolute;
                 inset: 0;
-                background-image: var(--avatar);
+                background-image: var(--image);
                 background-size: contain;
                 border-radius: 100vh;
                 animation: fadeOut var(--click-duration) linear;

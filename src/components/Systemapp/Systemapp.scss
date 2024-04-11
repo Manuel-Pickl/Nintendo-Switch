@@ -3,6 +3,7 @@
 .Systemapp {
     // from parent:
     // --click-duration
+    // --image
 
     .bubble {
         position: relative;
@@ -24,16 +25,6 @@
             &>img {
                 width: 100%;
                 height: 100%;
-            }
-        }
-
-        &>.Album {
-            &::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background-image: url("systemapps/AlbumAfter.png");
-                background-size: contain;
             }
         }
     }
@@ -59,26 +50,26 @@
                 }
             }
 
-            &>.News {
+            &>.news {
                 transform-origin: bottom;
-                animation: News var(--click-duration);
+                animation: newsAnimation var(--click-duration);
 
                 &::before {
                     background-color: hsla(357, 72%, 55%, 0.1);
                 }
             }
 
-            &>.Nintendo-eShop {
-                animation: Shop var(--click-duration);
+            &>.eShop {
+                animation: eShopAnimation var(--click-duration);
 
                 &::before {
                     background-color: hsla(38, 95%, 45%, 0.1);
                 }
             }
 
-            &>.Album {
+            &>.album {
                 transform-origin: left bottom;
-                animation: Album 1s;
+                animation: albumAnimation 1s;
                 
                 &::before {
                     transform-origin: 45% 44%;
@@ -86,29 +77,46 @@
                 }
 
                 &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background-image: var(--image);
+                    background-size: contain;
                     transform-origin: left bottom;
-                    animation: AlbumAfter 1s;
+                    animation: albumAfterAnimation 1s;
+                
+                    // clips only part of the frame for the background image
+                    clip-path: polygon(
+                        0 77%,
+                        0 100%,
+                        100% 100%,
+                        100% 0,
+                        70% 0,
+                        70% 23%,
+                        92% 23%,
+                        92% 77%
+                    );
                 }
             }
 
-            &>.Controller {
+            &>.controller {
                 transform-origin: 35% 65%;
-                animation: Controller var(--click-duration);
+                animation: controllerAnimation var(--click-duration);
 
                 &::before {
                     background-color: hsla(165, 2%, 41%, 0.1);
                 }
             }
 
-            &>.System-Settings {
-                animation: System-Settings var(--click-duration);
+            &>.settings {
+                animation: settingsAnimation var(--click-duration);
 
                 &::before {
                     background-color: hsla(165, 2%, 41%, 0.1);
                 }
             }
             
-            &>.Standby-Mode {
+            &>.standby {
                 &::before {
                     background-color: hsla(165, 2%, 41%, 0.1);
                 }
@@ -117,9 +125,17 @@
                     content: "";
                     position: absolute;
                     inset: 0;
-                    background-image: url("systemapps/Standby-Mode.png");
+                    background-image: var(--image);
                     background-size: contain;
                     animation: fadeOut var(--click-duration);
+                }
+            }
+
+            &>.allApps {
+                // animation:  var(--click-duration);
+
+                &::before {
+                    background-color: hsla(165, 2%, 41%, 0.1);
                 }
             }
         }
@@ -140,30 +156,30 @@
     }
 }
 
-@keyframes News {
+@keyframes newsAnimation {
     50% {
         scale: 1.1;
     }
 }
 
-@keyframes Shop {
+@keyframes eShopAnimation {
     50% {
         transform: translateY(-1vh);
     }
 }
 
-@keyframes Album {
+@keyframes albumAnimation {
     10%, 90% {
         rotate: -10deg;
     }
 }
-@keyframes AlbumAfter {
+@keyframes albumAfterAnimation {
     10%, 90% {
         rotate: 20deg;
     }
 }
 
-@keyframes Controller {
+@keyframes controllerAnimation {
     25% {
         rotate: -15deg;
     }
@@ -172,18 +188,11 @@
     }
 }
 
-@keyframes System-Settings {
+@keyframes settingsAnimation {
     50% {
         scale: 1.15;
     }
     100% {
         rotate: 45deg;
-    }
-}
-
-@keyframes Standby-ModeAfter {
-    100% {
-        scale: 1.5;
-        opacity: 0.25;
     }
 }

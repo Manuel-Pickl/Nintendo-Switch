@@ -3,15 +3,25 @@ import Game from "../Game/Game";
 import "./Games.scss"
 import { useDrag } from 'react-use-gesture';
 import { vhToPx } from "../../services/UnitService";
+import ShowAllGames from "../ShowAllGames/ShowAllGames";
+import { ElementData } from "../../types/ElementData";
+import { Id } from "../../types/Id";
+
+import zeldaBreathOfTheWildCover from "../../assets/covers/The Legend of Zelda Breath of the Wild.jpg"
+import marioKart8DeluxeCover from "../../assets/covers/Mario Kart 8 Deluxe.jpg"
+import animalCrossingNewHorizonsCover from "../../assets/covers/Animal Crossing New Horizons.jpg"
+import humanFallFlatCover from "../../assets/covers/Human Fall Flat.jpg"
+import superSmashBrothersUltimateCover from "../../assets/covers/Super Smash Brothers Ultimate.jpg"
+import gangBeastsCover from "../../assets/covers/Gang Beasts.jpg"
 
 const Games = () => {
-    const games = [
-        "The Legend of Zelda Breath of the Wild",
-        "Mario Kart 8 Deluxe",
-        "Animal Crossing New Horizons",
-        "Human Fall Flat",
-        "Super Smash Brothers Ultimate",
-        "Gang Beasts",
+    const games: ElementData[] = [
+        new ElementData(Id.zeldaBreathOfTheWild, "The Legend of Zelda Breath of the Wild", zeldaBreathOfTheWildCover),
+        new ElementData(Id.marioKart8Deluxe, "Mario Kart 8 Deluxe", marioKart8DeluxeCover),
+        new ElementData(Id.animalCrossingNewHorizons, "Animal Crossing New Horizons", animalCrossingNewHorizonsCover),
+        new ElementData(Id.humanFallFlat, "Human Fall Flat", humanFallFlatCover),
+        new ElementData(Id.superSmashBrothersUltimate, "Super Smash Brothers Ultimate", superSmashBrothersUltimateCover),
+        new ElementData(Id.gangBeasts, "Gang Beasts", gangBeastsCover),
     ];
 
     const gameListRef = useRef<HTMLDivElement>(null);
@@ -86,8 +96,9 @@ const Games = () => {
         <div className="Games">
             <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`, "--padding": `${paddingInVh}vh` } as React.CSSProperties}>
                 {games.map(game =>
-                    <Game title={game} key={game} dragging={dragging} onClick={handleClick}/>
+                    <Game key={game.id} data={game} dragging={dragging} onClick={handleClick}/>
                 )}
+                <ShowAllGames />
             </div>
         </div>
     );

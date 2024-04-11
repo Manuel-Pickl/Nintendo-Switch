@@ -1,33 +1,30 @@
-import { useReactiveVar } from "@apollo/client";
-import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import "./Systemapp.scss"
 import { SoundService } from "../../services/SoundService";
 import { Sound } from "../../types/Sound";
 import { useState } from "react";
+import { useSelectionService } from "../../services/SelectionService";
+import { ElementData } from "../../types/ElementData";
+import { Id } from "../../types/Id";
 
 interface SystemappProps {
-    title: string;
+    data: ElementData;
 }
 
 const Systemapp = ({
-    title,
+    data,
 }: SystemappProps) => {
-    const systemapps: string = "systemapps";
-    const selectedIdValue = useReactiveVar(selectedId);
-
+    const { id, name, image } = data;
+    const { isSelected, select } = useSelectionService();
+    
     const [clicked, setClicked] = useState<boolean>(false);
     const clickAnimationDurationInMs: number = 150;
+    const animationDelayInMs: number = 1000;
 
-    function appIsSelected(): boolean {
-        const userIsSelected: boolean = selectedIdValue == title;
-        return userIsSelected;
-    }
-    
     function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         event.stopPropagation();
 
-        if (appIsSelected()) {
+        if (isSelected(id)) {
             openApp();
         }
         else {
@@ -37,39 +34,36 @@ const Systemapp = ({
 
     function selectApp() {
         SoundService.playSound(Sound.SelectApp);
-        selectedId(title);
+        select(id);
     }
 
     function openApp() {
         var sound: Sound;
-        switch (title) {
-            case "News": sound = Sound.OpenNews; break;
-            case "Nintendo-eShop": sound = Sound.OpenShop; break;
-            case "Album": sound = Sound.OpenAlbum; break;
-            case "Controller": sound = Sound.OpenController; break;
-            case "System-Settings": sound = Sound.OpenSettings; break;
-            case "Standby-Mode": sound = Sound.OpenStandby; break;
-            default: throw Error(`No sound for element: ${title}`);
+        switch (id) {
+            case Id.news: sound = Sound.OpenNews; break;
+            case Id.eShop: sound = Sound.OpenShop; break;
+            case Id.album: sound = Sound.OpenAlbum; break;
+            case Id.controller: sound = Sound.OpenController; break;
+            case Id.settings: sound = Sound.OpenSettings; break;
+            case Id.standby: sound = Sound.OpenStandby; break;
+            default: throw Error(`No sound for element: ${id}`);
         }
 
         SoundService.playSound(sound);
 
         setClicked(true);
-
-        // const animationDelayInMs: number = title == "Album" ? 1000 : clickAnimationDurationInMs;
-        const animationDelayInMs: number = 1000;
         setTimeout(() => {
             setClicked(false);
         }, animationDelayInMs);
     }
 
     return (
-        <div className={`Systemapp ${appIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
+        <div className={`Systemapp ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`, "--image": `url(${image}`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
-                <div className={`icon ${title}`}>
-                    <img src={`${systemapps}/${title}.png`} alt={title} draggable="false" />
+                <div className={`icon ${id}`}>
+                    <img src={image} alt={name} draggable="false" />
                 </div>
-                <Title title={title} visible={selectedIdValue == title} target="app" size="small"/>
+                <Title title={name} visible={isSelected(id)} target="app" size="small"/>
             </div>
         </div>
     );

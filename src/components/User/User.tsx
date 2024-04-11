@@ -1,33 +1,26 @@
-import { useReactiveVar } from "@apollo/client";
 import "./User.scss";
-import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import { Sound } from "../../types/Sound";
 import { SoundService } from "../../services/SoundService";
 import { useState } from "react";
+import { useSelectionService } from "../../services/SelectionService";
+import { ElementData } from "../../types/ElementData";
 
 interface UserProps {
-    user: string;
+    data: ElementData;
 }
 
-const User = ({
-    user
-}: UserProps) => {
-    const selectedIdValue = useReactiveVar(selectedId);
-    const usersPath = "users"
+const User = ({data}: UserProps) => {
+    const { id, name, image } = data;
+    const { isSelected, select } = useSelectionService();
 
     const [clicked, setClicked] = useState<boolean>(false);
     const clickAnimationDurationInMs: number = 150;
 
-    function userIsSelected(): boolean {
-        const userIsSelected: boolean = selectedIdValue == user;
-        return userIsSelected;
-    }
-    
     function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         event.stopPropagation();
 
-        if (userIsSelected()) {
+        if (isSelected(id)) {
             openUser();
         }
         else {
@@ -37,7 +30,7 @@ const User = ({
 
     function selectUser() {
         SoundService.playSound(Sound.SelectUser);
-        selectedId(user);
+        select(id);
     }
 
     function openUser() {
@@ -50,11 +43,11 @@ const User = ({
     }
 
     return (
-        <div className={`User ${userIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`, "--avatar": `url(${usersPath}/${user}.png)`} as React.CSSProperties}>
+        <div className={`User ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`, "--image": `url(${image}`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
-                <img src={`${usersPath}/${user}.png`} alt="user" />
+                <img src={image} alt={name} />
             </div>
-            <Title title={`Page of ${user}`} visible={userIsSelected()} target="user" size="small"/>
+            <Title title={`Page of ${name}`} visible={isSelected(id)} target="user" size="small"/>
         </div>
     );
 }

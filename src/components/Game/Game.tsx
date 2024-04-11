@@ -1,32 +1,27 @@
-import { useReactiveVar } from "@apollo/client";
 import "./Game.scss"
-import { selectedId } from "../../types/globalVariables";
 import Title from "../Title/Title";
 import { SoundService } from "../../services/SoundService";
 import { Sound } from "../../types/Sound";
 import { useState } from "react";
+import { useSelectionService } from "../../services/SelectionService";
+import { ElementData } from "../../types/ElementData";
 
 interface GameProps {
-    title: string;
+    data: ElementData;
     dragging: boolean;
     onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const Game = ({
-    title,
+    data,
     dragging,
     onClick,
 }: GameProps) => {
-    const covers: string = "covers";
-    const selectedIdValue = useReactiveVar(selectedId);
+    const { id, name, image } = data;
+    const { isSelected, select } = useSelectionService();
 
     const [clicked, setClicked] = useState<boolean>(false);
     const clickAnimationDurationInMs: number = 120;
-
-    function gameIsSelected(): boolean {
-        const gameIsSelected: boolean = selectedIdValue == title;
-        return gameIsSelected;
-    }
 
     function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         event.stopPropagation();
@@ -35,7 +30,7 @@ const Game = ({
             return;
         }
 
-        if (gameIsSelected()) {
+        if (isSelected(id)) {
             openGame();
         }
         else {
@@ -45,7 +40,7 @@ const Game = ({
 
     function selectGame(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
         SoundService.playSound(Sound.SelectGame);
-        selectedId(title);
+        select(id);
         onClick(event);
     }
 
@@ -59,10 +54,10 @@ const Game = ({
     }
 
     return (
-        <div className={`Game ${gameIsSelected() && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
-            <Title title={title} visible={gameIsSelected()} target="game" />
+        <div className={`Game ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
+            <Title title={name} visible={isSelected(id)} target="game" />
             <div className="cover" onClick={handleClick}>
-                <img src={`${covers}/${title}.jpg`} alt={title} draggable="false"/>
+                <img src={image} alt={name} draggable="false"/>
             </div>
         </div>
     );
