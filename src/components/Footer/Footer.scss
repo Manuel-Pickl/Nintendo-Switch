@@ -2,17 +2,42 @@
     border-top: solid 0.3vh #3D3D3D;
     margin-inline: 4vh;
     padding-inline: 4vh;
+    display: flex;
+    justify-content: space-between;
 
     &>.controllers {
         height: 10vh;
         display: flex;
         align-items: center;
+        
         &>.icon {
             --size: 5vh;
             height: var(--size);
     
             &>img {
                 height: 100%;
+            }
+        }
+    }
+
+    &>.actions {
+        height: 10vh;
+        display: flex;
+        gap: 6vh;
+        font-size: 3.5vh;
+        
+        &>.action {
+            display: flex;
+            gap: 1vh;
+            align-items: center;
+
+            &>.icon {
+                --size: 3.5vh;
+                height: var(--size);
+        
+                &>img {
+                    height: 100%;
+                }
             }
         }
     }

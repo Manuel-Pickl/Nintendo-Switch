@@ -12,6 +12,7 @@ import Album from "../assets/sounds/Album.mp3"
 import Controller from "../assets/sounds/Controller.mp3"
 import Settings from "../assets/sounds/Settings.mp3"
 import Standby from "../assets/sounds/Standby.mp3"
+import ThisOne from "../assets/sounds/This One.mp3"
 
 // all sounds are from
 // https://downloads.khinsider.com/game-soundtracks/album/nintendo-switch-sound-effects
@@ -26,6 +27,7 @@ export const soundMapping: Record<Sound, string> = {
     [Sound.OpenGame]: PopupAndRunTitle,
     [Sound.SelectAllApps]: Tick,
     [Sound.OpenAllApps]: Icons,
+    [Sound.OpenOptions]: ThisOne,
 
 
     // apps
