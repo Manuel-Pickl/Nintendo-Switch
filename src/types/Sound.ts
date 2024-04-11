@@ -6,6 +6,8 @@ export enum Sound {
     // game
     SelectGame = "SelectGame",
     OpenGame = "OpenGame",
+    SelectAllApps = "SelectAllApps",
+    OpenAllApps = "OpenAllApps",
 
     // apps
     SelectApp = "SelectApp",

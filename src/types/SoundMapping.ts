@@ -5,6 +5,7 @@ import User from "../assets/sounds/User.mp3"
 import Select from "../assets/sounds/Select.mp3"
 import Nock from "../assets/sounds/Nock.mp3"
 import Tick from "../assets/sounds/Tick.mp3"
+import Icons from "../assets/sounds/Icons.mp3"
 import News from "../assets/sounds/News.mp3"
 import Shop from "../assets/sounds/Eshop.mp3"
 import Album from "../assets/sounds/Album.mp3"
@@ -17,12 +18,15 @@ import Standby from "../assets/sounds/Standby.mp3"
 
 export const soundMapping: Record<Sound, string> = {
     // user
-    [Sound.SelectUser]: Tick,
+    [Sound.SelectUser]: Select, // wrong sound for now!
     [Sound.OpenUser]: User,
 
     // game
     [Sound.SelectGame]: Klick,
     [Sound.OpenGame]: PopupAndRunTitle,
+    [Sound.SelectAllApps]: Tick,
+    [Sound.OpenAllApps]: Icons,
+
 
     // apps
     [Sound.SelectApp]: Select,

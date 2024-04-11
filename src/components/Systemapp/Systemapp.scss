@@ -142,19 +142,6 @@
     }
 }
 
-@keyframes bubbleFadeOut {
-    25% {
-        scale: 2.35;
-    }
-    80% {
-        opacity: 1;
-        scale: 2.35;
-    }
-    100% {
-        scale: 2;
-        opacity: 0;
-    }
-}
 
 @keyframes newsAnimation {
     50% {

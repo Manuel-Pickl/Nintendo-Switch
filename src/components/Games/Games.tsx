@@ -3,9 +3,9 @@ import Game from "../Game/Game";
 import "./Games.scss"
 import { useDrag } from 'react-use-gesture';
 import { vhToPx } from "../../services/UnitService";
-import ShowAllGames from "../ShowAllGames/ShowAllGames";
 import { ElementData } from "../../types/ElementData";
 import { Id } from "../../types/Id";
+import AllAppsButton from "../AllApps/AllApps";
 
 import zeldaBreathOfTheWildCover from "../../assets/covers/The Legend of Zelda Breath of the Wild.jpg"
 import marioKart8DeluxeCover from "../../assets/covers/Mario Kart 8 Deluxe.jpg"
@@ -13,6 +13,7 @@ import animalCrossingNewHorizonsCover from "../../assets/covers/Animal Crossing 
 import humanFallFlatCover from "../../assets/covers/Human Fall Flat.jpg"
 import superSmashBrothersUltimateCover from "../../assets/covers/Super Smash Brothers Ultimate.jpg"
 import gangBeastsCover from "../../assets/covers/Gang Beasts.jpg"
+import allAppsImage from "../../assets/icons/all-games.png"
 
 const Games = () => {
     const games: ElementData[] = [
@@ -20,9 +21,10 @@ const Games = () => {
         new ElementData(Id.marioKart8Deluxe, "Mario Kart 8 Deluxe", marioKart8DeluxeCover),
         new ElementData(Id.animalCrossingNewHorizons, "Animal Crossing New Horizons", animalCrossingNewHorizonsCover),
         new ElementData(Id.humanFallFlat, "Human Fall Flat", humanFallFlatCover),
-        new ElementData(Id.superSmashBrothersUltimate, "Super Smash Brothers Ultimate", superSmashBrothersUltimateCover),
         new ElementData(Id.gangBeasts, "Gang Beasts", gangBeastsCover),
+        new ElementData(Id.superSmashBrothersUltimate, "Super Smash Brothers Ultimate", superSmashBrothersUltimateCover),
     ];
+    const allGames: ElementData = new ElementData(Id.allApps, "Alle Software", allAppsImage)
 
     const gameListRef = useRef<HTMLDivElement>(null);
 
@@ -98,7 +100,7 @@ const Games = () => {
                 {games.map(game =>
                     <Game key={game.id} data={game} dragging={dragging} onClick={handleClick}/>
                 )}
-                <ShowAllGames />
+                <AllAppsButton data={allGames} dragging={dragging} onClick={handleClick}/>
             </div>
         </div>
     );

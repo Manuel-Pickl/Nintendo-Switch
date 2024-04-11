@@ -5,7 +5,7 @@ import { vhToPx } from "../../services/UnitService";
 interface TitleProps {
     title: string;
     visible: boolean;
-    target: "user" | "game" | "all-games" | "app";
+    target: "user" | "game" | "allGames" | "app";
     size?: "big" | "small";
 }
 

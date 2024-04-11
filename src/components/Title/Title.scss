@@ -17,6 +17,9 @@
         &.game {
             bottom: 37.8vh;
         }
+        &.allGames {
+            bottom: 108%;
+        }
         &.app {
             top: 108%;
         }
@@ -27,7 +30,7 @@
         }
 
         &.small {
-            font-size: 3vh;
+            font-size: 3.2vh;
         }
     }
 

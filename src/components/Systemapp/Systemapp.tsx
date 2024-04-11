@@ -61,7 +61,7 @@ const Systemapp = ({
         <div className={`Systemapp ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`, "--image": `url(${image}`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
                 <div className={`icon ${id}`}>
-                    <img src={image} alt={name} draggable="false" />
+                    <img src={image} alt={name} />
                 </div>
                 <Title title={name} visible={isSelected(id)} target="app" size="small"/>
             </div>
