@@ -9,7 +9,10 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  /* pointer-events: none; */
+}
+
+img {
+  pointer-events: none;
 }
 
 body {
