@@ -12,8 +12,12 @@ function App() {
     SoundService.playSound(Sound.Click);
   }
 
+  function handleRightClick(event: React.MouseEvent<HTMLDivElement>) {
+    event.preventDefault();
+  }
+  
   return (
-    <div onClick={playClickSound}>
+    <div onClick={playClickSound} onContextMenu={handleRightClick}>
       <Home />
     </div>
   )

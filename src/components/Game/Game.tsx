@@ -53,10 +53,20 @@ const Game = ({
         }, clickAnimationDurationInMs);
     }
 
+    function handleRightClick(event: React.MouseEvent<HTMLDivElement>) {
+        event.preventDefault();
+        
+        if (!isSelected(id)) {
+            return;
+        }
+
+        SoundService.playSound(Sound.OpenOptions);
+    }
+    
     return (
         <div className={`Game ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
             <Title title={name} visible={isSelected(id)} target="game" />
-            <div className="cover" onClick={handleClick}>
+            <div className="cover" onClick={handleClick} onContextMenu={handleRightClick}>
                 <img src={image} alt={name} />
             </div>
         </div>
