@@ -1,9 +1,12 @@
 .Header {
+    // from parent:
+    // --battery-level
+
     height: 19vh;
     padding: 6vh 8vh;
     display: flex;
-    justify-content: space-between; /* This spreads out the items */
-
+    justify-content: space-between;
+    font-size: 3.5vh;
 
     &>.users {
         display: flex;
@@ -15,11 +18,33 @@
         gap: 2vh;
         padding-top: 1.5vh;
 
-        &>.time {
-            font-size: 3.5vh;
+        &>.battery {
+            display: flex;
+            gap: 0.8vh;
+
+            span {
+                font-size: 2.5vh;
+                font-weight: 700;
+                margin-inline: 0.1vh;
+            }
+
+            &>.icon {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 16%;
+                    translate: 0 -50%;
+                    height: 1.3vh;
+                    width: calc(3.1vh * var(--battery-level));
+                    // width: 0;
+                    background-color: #2F2F2F;                    
+                }
+            }
         }
 
-        &>.icon {
+        .icon {
+            position: relative;
             --size: 5vh;
             width: var(--size);
             height: var(--size);
