@@ -7,8 +7,7 @@ import { Id } from "../../types/Id"
 import kass from "../../assets/users/Kass.png"
 import kk from "../../assets/users/K.K..png"
 import { ElementData } from "../../types/ElementData"
-import { getTime } from "../../services/TimeService"
-import { getBatteryLevel } from "../../services/BatteryService"
+import { getBatteryLevel, getTime } from "../../services/DeviceDataService"
 
 const Header = () => {
     const users: ElementData[] = [
@@ -19,7 +18,6 @@ const Header = () => {
     const updateIntervallInMs = 60000; // lower for quicker updates
     const [batteryLevel, setBatteryLevel] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<string>();
-
 
     useEffect(() => {
         fetchConsoleData();
