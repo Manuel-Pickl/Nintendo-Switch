@@ -35,8 +35,8 @@ export const useActionsService = () => {
 
         const actions: ActionData[] = [];
         if (isGameSelected) {
-            actions.push(new ActionData("Optionen", false));
-            actions.push(new ActionData("Starten", true));
+            actions.push(new ActionData("Options", false));
+            actions.push(new ActionData("Start", true));
         }
         else if (isUserSelected || isSystemAppSelected) {
             actions.push(new ActionData("Ok", true));

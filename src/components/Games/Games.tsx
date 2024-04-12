@@ -24,7 +24,7 @@ const Games = () => {
         new ElementData(Id.gangBeasts, "Gang Beasts", gangBeastsCover),
         new ElementData(Id.superSmashBrothersUltimate, "Super Smash Brothers Ultimate", superSmashBrothersUltimateCover),
     ];
-    const allGames: ElementData = new ElementData(Id.allApps, "Alle Software", allAppsImage)
+    const allGames: ElementData = new ElementData(Id.allApps, "Alle Apps", allAppsImage)
 
     const gameListRef = useRef<HTMLDivElement>(null);
 
