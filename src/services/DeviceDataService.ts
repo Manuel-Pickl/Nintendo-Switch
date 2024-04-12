@@ -22,7 +22,7 @@ export async function getBatteryLevel(): Promise<number> {
     try {
         // @ts-ignore
         const battery = await (navigator).getBattery();
-        const batteryLevel = battery.level * 100;
+        const batteryLevel = Math.round(battery.level * 100);
         return batteryLevel;
     } catch (error) {
         throw Error(`Failed to retrieve battery level:\n${error}`);

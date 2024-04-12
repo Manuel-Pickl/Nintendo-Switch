@@ -15,7 +15,7 @@ const Header = () => {
         new ElementData(Id.user2, "K.K.", kk)
     ];
 
-    const updateIntervallInMs = 60000; // lower for quicker updates
+    const updateIntervallInMs = 1000; // lower for quicker updates
     const [batteryLevel, setBatteryLevel] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<string>();
 
