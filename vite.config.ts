@@ -12,7 +12,7 @@ export default defineConfig({
         short_name: 'Nintendo Switch',
         description: 'Feel the Home Menu of the Nintendo Switch',
         theme_color: '#ffffff00',
-        display: 'standalone',
+        display: 'fullscreen',
         orientation: 'landscape',
         start_url: '.',
         icons: [
