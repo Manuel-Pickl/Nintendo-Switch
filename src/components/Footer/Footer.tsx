@@ -1,25 +1,27 @@
 import "./Footer.scss"
 import switchIcon from "../../assets/icons/switch.png"
-import leftClickImage from "../../assets/icons/leftclick.png"
-import rightClickImage from "../../assets/icons/rightclick.png"
 import { useActionsService } from "../../services/ActionsService"
 import { ActionData } from "../../types/ActionData"
-import touchImage from "../../assets/icons/touch.png"
-import holdImage from "../../assets/icons/hold.png"
+// import leftClickImage from "../../assets/icons/leftclick.png"
+// import rightClickImage from "../../assets/icons/rightclick.png"
+// import touchImage from "../../assets/icons/touch.png"
+// import holdImage from "../../assets/icons/hold.png"
+import aImage from "../../assets/icons/a.png"
+import plusMinusImage from "../../assets/icons/+-.png"
 
 const Footer = () => {
     const { actions } = useActionsService();
 
     function getActionImage(action: ActionData): string {
-        var actionImage: string;
+        var actionImage: string = action.primary ? aImage : plusMinusImage;
 
-        const isTouchDevice: boolean = navigator.maxTouchPoints > 0;
-        if (isTouchDevice) {
-            actionImage = action.primary ? touchImage : holdImage;
-        }
-        else {
-            actionImage = action.primary ? leftClickImage : rightClickImage;
-        }
+        // const isTouchDevice: boolean = navigator.maxTouchPoints > 0;
+        // if (isTouchDevice) {
+        //     actionImage = action.primary ? touchImage : holdImage;
+        // }
+        // else {
+        //     actionImage = action.primary ? leftClickImage : rightClickImage;
+        // }
 
         return actionImage;
     }
