@@ -4,8 +4,8 @@ import leftClickImage from "../../assets/icons/leftclick.png"
 import rightClickImage from "../../assets/icons/rightclick.png"
 import { useActionsService } from "../../services/ActionsService"
 import { ActionData } from "../../types/ActionData"
-import touchImage from "../../assets/icons/_touch.png"
-import holdImage from "../../assets/icons/_hold.png"
+import touchImage from "../../assets/icons/touch.png"
+import holdImage from "../../assets/icons/hold.png"
 
 const Footer = () => {
     const { actions } = useActionsService();

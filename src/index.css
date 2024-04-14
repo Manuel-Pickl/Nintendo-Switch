@@ -15,7 +15,9 @@ img {
   pointer-events: none;
 }
 
-body {
+html, body {
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   background-color: #ECEBEC;
 }
