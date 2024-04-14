@@ -7,13 +7,13 @@ import { ElementData } from "../../types/ElementData";
 import { Id } from "../../types/Id";
 import AllAppsButton from "../AllApps/AllApps";
 
-import zeldaBreathOfTheWildCover from "../../assets/covers/The Legend of Zelda Breath of the Wild.jpg"
-import marioKart8DeluxeCover from "../../assets/covers/Mario Kart 8 Deluxe.jpg"
-import animalCrossingNewHorizonsCover from "../../assets/covers/Animal Crossing New Horizons.jpg"
-import humanFallFlatCover from "../../assets/covers/Human Fall Flat.jpg"
-import superSmashBrothersUltimateCover from "../../assets/covers/Super Smash Brothers Ultimate.jpg"
-import gangBeastsCover from "../../assets/covers/Gang Beasts.jpg"
-import allAppsImage from "../../assets/icons/all-games.png"
+import zeldaBreathOfTheWildCover from "../../assets/images/covers/The Legend of Zelda Breath of the Wild.jpg"
+import marioKart8DeluxeCover from "../../assets/images/covers/Mario Kart 8 Deluxe.jpg"
+import animalCrossingNewHorizonsCover from "../../assets/images/covers/Animal Crossing New Horizons.jpg"
+import humanFallFlatCover from "../../assets/images/covers/Human Fall Flat.jpg"
+import superSmashBrothersUltimateCover from "../../assets/images/covers/Super Smash Brothers Ultimate.jpg"
+import gangBeastsCover from "../../assets/images/covers/Gang Beasts.jpg"
+import allAppsImage from "../../assets/images/icons/all-games.png"
 
 const Games = () => {
     const games: ElementData[] = [

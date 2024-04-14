@@ -3,12 +3,12 @@ import { Id } from "../../types/Id";
 import Systemapp from "../Systemapp/Systemapp";
 import "./Apps.scss"
 
-import newsImage from "../../assets/systemapps/News.png"
-import eShopImage from "../../assets/systemapps/Nintendo-eShop.png"
-import albumImage from "../../assets/systemapps/Album.png"
-import controllerImage from "../../assets/systemapps/Controller.png"
-import settingsImage from "../../assets/systemapps/System-Settings.png"
-import standbyImage from "../../assets/systemapps/Standby-Mode.png"
+import newsImage from "../../assets/images/systemapps/News.png"
+import eShopImage from "../../assets/images/systemapps/Nintendo-eShop.png"
+import albumImage from "../../assets/images/systemapps/Album.png"
+import controllerImage from "../../assets/images/systemapps/Controller.png"
+import settingsImage from "../../assets/images/systemapps/System-Settings.png"
+import standbyImage from "../../assets/images/systemapps/Standby-Mode.png"
 
 const Apps = () => {
     const apps: ElementData[] = [

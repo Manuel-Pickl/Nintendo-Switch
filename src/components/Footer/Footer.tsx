@@ -1,13 +1,13 @@
 import "./Footer.scss"
-import switchIcon from "../../assets/icons/switch.png"
+import switchIcon from "../../assets/images/icons/switch.png"
 import { useActionsService } from "../../services/ActionsService"
 import { ActionData } from "../../types/ActionData"
 // import leftClickImage from "../../assets/icons/leftclick.png"
 // import rightClickImage from "../../assets/icons/rightclick.png"
 // import touchImage from "../../assets/icons/touch.png"
 // import holdImage from "../../assets/icons/hold.png"
-import aImage from "../../assets/icons/a.png"
-import plusMinusImage from "../../assets/icons/+-.png"
+import aImage from "../../assets/images/icons/a.png"
+import plusMinusImage from "../../assets/images/icons/+-.png"
 
 const Footer = () => {
     const { actions } = useActionsService();
