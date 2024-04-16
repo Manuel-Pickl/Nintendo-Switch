@@ -18,6 +18,9 @@ import ThisOne from "../assets/sounds/This One.mp3"
 // https://downloads.khinsider.com/game-soundtracks/album/nintendo-switch-sound-effects
 
 export const soundMapping: Record<Sound, string> = {
+    // lockscreen
+    [Sound.ClickHomeIcon]: Tick,
+
     // user
     [Sound.SelectUser]: Select, // wrong sound for now!
     [Sound.OpenUser]: User,

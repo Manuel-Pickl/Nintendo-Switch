@@ -1,4 +1,7 @@
 export enum Sound {
+    // lockscreen
+    ClickHomeIcon = "ClickHomeIcon",
+    
     // user
     SelectUser = "SelectUser",
     OpenUser = "OpenUser",

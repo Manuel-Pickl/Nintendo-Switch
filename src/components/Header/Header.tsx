@@ -8,6 +8,7 @@ import kass from "../../assets/images/users/Kass.png"
 import kk from "../../assets/images/users/K.K..png"
 import { ElementData } from "../../types/ElementData"
 import { getBatteryLevel, getTime } from "../../services/DeviceDataService"
+import { useLocation } from "react-router-dom"
 
 const Header = () => {
     const users: ElementData[] = [
@@ -18,6 +19,8 @@ const Header = () => {
     const updateIntervallInMs = 1000; // lower for quicker updates
     const [batteryLevel, setBatteryLevel] = useState<number>(0);
     const [currentTime, setCurrentTime] = useState<string>();
+
+    const path = useLocation().pathname;
 
     useEffect(() => {
         fetchConsoleData();
@@ -37,10 +40,13 @@ const Header = () => {
     return (
         <div className="Header">
             <div className="users">
-                {users.map(user => {return(
-                    <User key={user.id} data={user}/>
-                )})}
+                {path == "/home" && 
+                    users.map(user => {return(
+                        <User key={user.id} data={user}/>
+                    )})
+                }
             </div>
+            
             <div className="console-info">
                 <div className="time">
                     {currentTime}

@@ -1,0 +1,36 @@
+.Splashscreen {
+    height: 100vh;
+
+    &>.icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        --size: 24vh;
+        height: var(--size);
+
+        &>img {
+            height: 100%;
+        }
+    }
+
+    &>.info {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        translate: -50%;
+        font-size: 5.5vh;
+        display: flex;
+        align-items: center;
+        gap: 1.2vh;
+
+        &>.icon {
+            --a-size: 5.7vh;
+            height: var(--a-size);
+    
+            &>img {
+                height: 100%;
+            }
+        }
+    }
+}
