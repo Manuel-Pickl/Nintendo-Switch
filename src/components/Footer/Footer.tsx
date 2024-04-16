@@ -14,15 +14,6 @@ const Footer = () => {
 
     function getActionImage(action: ActionData): string {
         var actionImage: string = action.primary ? aImage : plusMinusImage;
-
-        // const isTouchDevice: boolean = navigator.maxTouchPoints > 0;
-        // if (isTouchDevice) {
-        //     actionImage = action.primary ? touchImage : holdImage;
-        // }
-        // else {
-        //     actionImage = action.primary ? leftClickImage : rightClickImage;
-        // }
-
         return actionImage;
     }
     
