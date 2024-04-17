@@ -13,13 +13,20 @@ import Controller from "../assets/sounds/Controller.mp3"
 import Settings from "../assets/sounds/Settings.mp3"
 import Standby from "../assets/sounds/Standby.mp3"
 import ThisOne from "../assets/sounds/This One.mp3"
+import TurnOn from "../assets/sounds/Turn On.mp3"
+import TurnOff from "../assets/sounds/Turn Off.mp3"
+import Home from "../assets/sounds/Home.mp3"
 
 // all sounds are from
 // https://downloads.khinsider.com/game-soundtracks/album/nintendo-switch-sound-effects
 
 export const soundMapping: Record<Sound, string> = {
     // lockscreen
+    [Sound.OpenHightlights]: TurnOn,
+    [Sound.CloseHighlights]: TurnOff,
     [Sound.ClickHomeIcon]: Tick,
+    [Sound.StartHomeMenu]: PopupAndRunTitle,
+    [Sound.OnHomeMenuStart]: Home,
 
     // user
     [Sound.SelectUser]: Select, // wrong sound for now!

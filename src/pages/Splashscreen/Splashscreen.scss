@@ -1,36 +1,182 @@
 .Splashscreen {
+    // from parent:
+    // --highlights-width
+
     height: 100vh;
+    display: flex;
 
-    &>.icon {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        translate: -50% -50%;
-        --size: 24vh;
-        height: var(--size);
+    &>.highlights {
+        position: relative;
+        width: var(--highlights-width);
+        background-color: #3D3D3D;
+        transition: width 200ms;
+        padding-block: 8vh;
+        overflow: hidden;
 
-        &>img {
-            height: 100%;
+        &>.content {
+            display: grid;
+            place-items: center;
+            gap: 1vh;
+
+            &>.highlight {
+                position: relative;
+                width: 42vh;
+                aspect-ratio: 16/9;
+                background-color: #686868;
+
+                &>img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &>.subtitle {
+                    position: absolute;
+                    inset: auto 2vh 0.4vh 2vh;
+                }
+            }
+        }
+
+        &>.continue {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            translate: -50%;
+            font-size: 5.5vh;
+            display: flex;
+            align-items: center;
+            gap: 1.2vh;
+            color: white;
+    
+            &>.icon {
+                --a-size: 5.7vh;
+                height: var(--a-size);
+        
+                &>img {
+                    height: 100%;
+                }
+            }
         }
     }
 
-    &>.info {
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        translate: -50%;
-        font-size: 5.5vh;
-        display: flex;
-        align-items: center;
-        gap: 1.2vh;
+    &>.login {
+        position: relative;
+        width: 100%;
 
         &>.icon {
-            --a-size: 5.7vh;
-            height: var(--a-size);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            --size: 24vh;
+            height: var(--size);
     
             &>img {
                 height: 100%;
+            }        
+        }
+    
+        &>.continue {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            translate: -50%;
+            font-size: 5.5vh;
+            display: flex;
+            align-items: center;
+            gap: 1.2vh;
+    
+            &>.icon {
+                --a-size: 5.7vh;
+                height: var(--a-size);
+        
+                &>img {
+                    height: 100%;
+                }
             }
         }
+    
+        &>.pressSameButton {
+            position: absolute;
+            inset: auto 0 7vh 0;
+            display: grid;
+            place-items: center;
+            font-size: 4.5vh;
+            gap: 2vh;
+    
+            &>.dots {
+                display: flex;
+                gap: 2.6vh;
+    
+                &>.dot {
+                    --dot-size: 2.1vh; 
+                    width: var(--dot-size);
+                    height: var(--dot-size);
+                    border: solid 0.4vh #3D3D3D;
+                    border-radius: 100vh;
+    
+                    &.active {
+                        background-color: #3D3D3D;
+                    }
+                }
+            }
+
+            &>.back {
+                position: absolute;
+                bottom: 0;
+                left: 5vh;
+                font-size: 3.5vh;
+                display: flex;
+                align-items: center;
+                gap: 1.2vh;
+        
+                &>.icon {
+                    --a-size: 3.6vh;
+                    height: var(--a-size);
+            
+                    &>img {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    &.clicked {
+        animation: scaleAndFadeOut 300ms 300ms forwards;
+
+        &>.login {
+            &>.icon {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 100vh;
+                    scale: 0;
+                    animation: HomeButtonFadeOut 500ms;
+                    background-color: hsla(165, 2%, 41%, 0.1);
+                }
+            }
+        }
+    }
+}
+
+@keyframes scaleAndFadeOut {
+    100% {
+        scale: 1.3;
+        opacity: 0;
+    }    
+}
+
+@keyframes HomeButtonFadeOut {
+    25% {
+        scale: 1.2;
+    }
+    60% {
+        opacity: 1;
+        scale: 1.2;
+    }
+    100% {
+        scale: 1;
+        opacity: 0;
     }
 }

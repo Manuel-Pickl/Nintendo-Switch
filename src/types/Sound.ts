@@ -1,7 +1,11 @@
 export enum Sound {
     // lockscreen
+    OpenHightlights = "OpenHightlights",
+    CloseHighlights = "CloseHighlights",
     ClickHomeIcon = "ClickHomeIcon",
-    
+    StartHomeMenu = "StartHomeMenu",
+    OnHomeMenuStart = "OnHomeMenuStart",
+
     // user
     SelectUser = "SelectUser",
     OpenUser = "OpenUser",

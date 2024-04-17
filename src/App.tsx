@@ -4,7 +4,6 @@ import { SoundService } from "./services/SoundService";
 import { Sound } from "./types/Sound";
 import Splashscreen from "./pages/Splashscreen/Splashscreen";
 import { Route, Routes } from "react-router-dom";
-import ToHome from "./pages/ToHome/ToHome";
 
 function App() {
   useEffect(() => {
@@ -22,8 +21,7 @@ function App() {
   return (
     <div onClick={handleClick} onContextMenu={handleRightClick}>
       <Routes>
-        <Route path="/" element={<Splashscreen />} />
-        <Route path="/toHome" element={<ToHome onClick={handleClick} />} />
+        <Route path="/" element={<Splashscreen onClick={handleClick} />} />
         <Route path="/home" element={<Home />} />
         {/* <Route path="/allgames" element={<AllGames />} />
         <Route path="/user" element={<User />} />
