@@ -91,7 +91,7 @@ const Splashscreen = ({
                     <a className="highlight">
                         <img src={eshopImage} alt="eshopImage" />
                     </a>
-                    <a className="highlight withSubtitle" href="www.manuelpickl.com" target="blank">
+                    <a className="highlight withSubtitle" href="https://www.manuelpickl.com" target="blank">
                         <img src={homepageImage} alt="homepageImage" />
                         <div className="subtitle">Want to see more of me?</div>
                     </a>
