@@ -2,10 +2,15 @@ import { useState } from "react";
 import "./Splashscreen.scss"
 import { useNavigate } from "react-router-dom";
 import homeImage from "../../assets/images/icons/home.png"
-import aImage from "../../assets/images/icons/a.png"
 import { SoundService } from "../../services/SoundService";
 import { Sound } from "../../types/Sound";
 import Header from "../../components/Header/Header";
+import aImage from "../../assets/images/icons/a.png"
+import bImage from "../../assets/images/icons/b.png"
+import yImage from "../../assets/images/icons/y.png"
+import eshopImage from "../../assets/images/highlights/eshop.png"
+import newsImage from "../../assets/images/highlights/news.png"
+import homepageImage from "../../assets/images/highlights/homepage.png"
 
 interface SplashscreenProps {
     onClick: () => void;
@@ -81,20 +86,20 @@ const Splashscreen = ({
             <div className="highlights" style={{"--highlights-width": `${hightlightsWidthInVh}vh`} as React.CSSProperties}>
                 <div className="content">
                     <a className="highlight">
-                        <img src="" alt="" />
-                        <div className="subtitle">Welcome to the News!</div>
+                        <img src={newsImage} alt="newsImage" />
                     </a>
                     <a className="highlight">
-                        <img src="" alt="" />
+                        <img src={eshopImage} alt="eshopImage" />
+                    </a>
+                    <a className="highlight withSubtitle" href="www.manuelpickl.com" target="blank">
+                        <img src={homepageImage} alt="homepageImage" />
                         <div className="subtitle">Want to see more of me?</div>
-                    </a>
-                    <a className="highlight">
                     </a>
                 </div>
                 
                 <div className="continue">
                     <div className="icon">
-                        <img src={aImage} alt="a" />
+                        <img src={yImage} alt="yImage" />
                     </div>
                     Highlights
                 </div>
@@ -126,7 +131,7 @@ const Splashscreen = ({
 
                         <div className="back" onClick={handleBackClick}>
                             <div className="icon">
-                                <img src={aImage} alt="a" />
+                                <img src={bImage} alt="b" />
                             </div>
                             Back
                         </div>
