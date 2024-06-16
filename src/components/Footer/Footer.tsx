@@ -1,21 +1,9 @@
 import "./Footer.scss"
 import switchIcon from "../../assets/images/icons/switch.png"
 import { useActionsService } from "../../services/ActionsService"
-import { ActionData } from "../../types/ActionData"
-// import leftClickImage from "../../assets/icons/leftclick.png"
-// import rightClickImage from "../../assets/icons/rightclick.png"
-// import touchImage from "../../assets/icons/touch.png"
-// import holdImage from "../../assets/icons/hold.png"
-import aImage from "../../assets/images/icons/a.png"
-import plusMinusImage from "../../assets/images/icons/+-.png"
 
 const Footer = () => {
     const { actions } = useActionsService();
-
-    function getActionImage(action: ActionData): string {
-        var actionImage: string = action.primary ? aImage : plusMinusImage;
-        return actionImage;
-    }
     
     return (
         <div className="Footer">
@@ -26,9 +14,9 @@ const Footer = () => {
             </div>
             <div className="actions">
                 {actions().map(action => {return (
-                    <div key={action.name} className="action">
+                    <div key={action.name} className="action" onClick={action.action}>
                         <div className="icon">
-                            <img src={getActionImage(action)} alt="mouseclick image" />
+                            <img src={action.image} alt="mouseclick image" />
                         </div>
                         {action.name}
                     </div>    

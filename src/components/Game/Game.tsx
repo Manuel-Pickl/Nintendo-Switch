@@ -8,14 +8,14 @@ import { ElementData } from "../../types/ElementData";
 
 interface GameProps {
     data: ElementData;
-    dragging: boolean;
-    onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    dragging?: boolean;
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const Game = ({
     data,
-    dragging,
-    onClick,
+    dragging = false,
+    onClick = () => {},
 }: GameProps) => {
     const { id, name, image } = data;
     const { isSelected, select } = useSelectionService();

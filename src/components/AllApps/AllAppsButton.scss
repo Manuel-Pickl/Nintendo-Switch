@@ -1,6 +1,6 @@
 @import "../../animations.css";
 
-.AllApps {
+.AllAppsButton {
     // from parent:
     // --click-duration
     // --image
@@ -41,7 +41,7 @@
     &.clicked {
         &>.bubble {
             &>.icon {
-                animation: allAppsAnimation var(--click-duration);
+                animation: allAppsButtonAnimation var(--click-duration);
 
                 &::before {
                     content: "";
@@ -49,7 +49,7 @@
                     inset: 0;
                     border-radius: 100vh;
                     scale: 0;
-                    animation: allAppsBubbleFadeOut 500ms;
+                    animation: allAppsButtonBubbleFadeOut 500ms;
                     background-color: hsla(165, 2%, 41%, 0.1);
                 }
             }
@@ -57,13 +57,13 @@
     }
 }
 
-@keyframes allAppsAnimation {
+@keyframes allAppsButtonAnimation {
     50% {
         // ToDo: add real animation
     }
 }
 
-@keyframes allAppsBubbleFadeOut {
+@keyframes allAppsButtonBubbleFadeOut {
     25% {
         scale: 3.4;
     }

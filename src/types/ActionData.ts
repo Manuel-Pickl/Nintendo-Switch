@@ -1,9 +1,11 @@
 export class ActionData {
-    constructor(name: string, primary: boolean) {
+    constructor(name: string, image: string, action: () => any = () => {}) {
         this.name = name;
-        this.primary = primary;
+        this.image = image;
+        this.action = action;
     }
 
     name: string;
-    primary: boolean;
+    image: string;
+    action: () => any;
 }

@@ -35,7 +35,7 @@ export const soundMapping: Record<Sound, string> = {
     // game
     [Sound.SelectGame]: Klick,
     [Sound.OpenGame]: PopupAndRunTitle,
-    [Sound.SelectAllApps]: Tick,
+    [Sound.SelectAllAppsButton]: Tick,
     [Sound.OpenAllApps]: Icons,
     [Sound.OpenOptions]: ThisOne,
 

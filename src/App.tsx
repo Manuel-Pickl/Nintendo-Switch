@@ -4,6 +4,7 @@ import { SoundService } from "./services/SoundService";
 import { Sound } from "./types/Sound";
 import Splashscreen from "./pages/Splashscreen/Splashscreen";
 import { Route, Routes } from "react-router-dom";
+import AllGames from "./pages/AllGames/AllGames";
 
 function App() {
   useEffect(() => {
@@ -21,16 +22,25 @@ function App() {
   return (
     <div onClick={handleClick} onContextMenu={handleRightClick}>
       <Routes>
-        <Route path="/" element={<Splashscreen onClick={handleClick} />} />
-        <Route path="/home" element={<Home />} />
-        {/* <Route path="/allgames" element={<AllGames />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/gamesettings" element={<GameSettings />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/eshop" element={<EShop />} />
-        <Route path="/album" element={<Album />} />
-        <Route path="/controller" element={<Controller />} />
-        <Route path="/settings" element={<Settings />} /> */}
+        <Route path="/" element={
+          <Splashscreen onClick={handleClick} />
+        } />
+        
+        <Route path="/home" element={
+          <Home />
+        } />
+        
+        <Route path="/allgames" element={
+          <AllGames />
+        } />
+
+        {/* <Route path="/user" element={<User />} /> */}
+        {/* <Route path="/gamesettings" element={<GameSettings />} /> */}
+        {/* <Route path="/news" element={<News />} /> */}
+        {/* <Route path="/eshop" element={<EShop />} /> */}
+        {/* <Route path="/album" element={<Album />} /> */}
+        {/* <Route path="/controller" element={<Controller />} /> */}
+        {/* <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </div>
   )

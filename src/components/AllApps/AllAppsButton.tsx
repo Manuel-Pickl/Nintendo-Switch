@@ -4,19 +4,21 @@ import { ElementData } from "../../types/ElementData"
 import { SoundService } from "../../services/SoundService"
 import { Sound } from "../../types/Sound"
 import Title from "../Title/Title"
-import "./AllApps.scss"
+import "./AllAppsButton.scss"
+import { useNavigate } from "react-router-dom"
 
-interface AllAppsProps {
+interface AllAppsButtonProps {
     data: ElementData;
     dragging: boolean;
     onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-const AllApps = ({
+const AllAppsButton = ({
     data,
     dragging,
     onClick,
-}: AllAppsProps) => {
+}: AllAppsButtonProps) => {
+    const navigate = useNavigate();
     const { id, name, image } = data;
     const { isSelected, select } = useSelectionService();
 
@@ -35,12 +37,12 @@ const AllApps = ({
             openAllApps();
         }
         else {
-            selectAllApps(event);
+            selectAllAppsButton(event);
         }
     }
 
-    function selectAllApps(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-        SoundService.playSound(Sound.SelectAllApps);
+    function selectAllAppsButton(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+        SoundService.playSound(Sound.SelectAllAppsButton);
         select(id);
         onClick(event);
     }
@@ -51,11 +53,12 @@ const AllApps = ({
         setClicked(true);
         setTimeout(() => {
             setClicked(false);
+            navigate("/allgames");
         }, animationDelayInMs);
     }
 
     return (
-        <div className={`AllApps ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
+        <div className={`AllAppsButton ${isSelected(id) && "selected"} ${clicked && "clicked"}`} style={{"--click-duration": `${clickAnimationDurationInMs}ms`} as React.CSSProperties}>
             <div className="bubble" onClick={handleClick}>
                 <Title title={name} visible={isSelected(id)} target="allGames" size="small"/>
                 <div className="icon">
@@ -66,4 +69,4 @@ const AllApps = ({
     );
 }
 
-export default AllApps;
+export default AllAppsButton;

@@ -5,26 +5,15 @@ import { useDrag } from 'react-use-gesture';
 import { vhToPx } from "../../services/UnitService";
 import { ElementData } from "../../types/ElementData";
 import { Id } from "../../types/Id";
-import AllAppsButton from "../AllApps/AllApps";
-
-import zeldaBreathOfTheWildCover from "../../assets/images/covers/The Legend of Zelda Breath of the Wild.jpg"
-import marioKart8DeluxeCover from "../../assets/images/covers/Mario Kart 8 Deluxe.jpg"
-import animalCrossingNewHorizonsCover from "../../assets/images/covers/Animal Crossing New Horizons.jpg"
-import humanFallFlatCover from "../../assets/images/covers/Human Fall Flat.jpg"
-import superSmashBrothersUltimateCover from "../../assets/images/covers/Super Smash Brothers Ultimate.jpg"
-import gangBeastsCover from "../../assets/images/covers/Gang Beasts.jpg"
-import allAppsImage from "../../assets/images/icons/all-games.png"
+import AllAppsButton from "../AllApps/AllAppsButton";
+import allAppsButtonImage from "../../assets/images/icons/all-games.png"
+import { useReactiveVar } from "@apollo/client";
+import { gamesVar } from "../../types/globalVariables";
 
 const Games = () => {
-    const games: ElementData[] = [
-        new ElementData(Id.zeldaBreathOfTheWild, "The Legend of Zelda Breath of the Wild", zeldaBreathOfTheWildCover),
-        new ElementData(Id.marioKart8Deluxe, "Mario Kart 8 Deluxe", marioKart8DeluxeCover),
-        new ElementData(Id.animalCrossingNewHorizons, "Animal Crossing New Horizons", animalCrossingNewHorizonsCover),
-        new ElementData(Id.humanFallFlat, "Human Fall Flat", humanFallFlatCover),
-        new ElementData(Id.gangBeasts, "Gang Beasts", gangBeastsCover),
-        new ElementData(Id.superSmashBrothersUltimate, "Super Smash Brothers Ultimate", superSmashBrothersUltimateCover),
-    ];
-    const allGames: ElementData = new ElementData(Id.allApps, "All Apps", allAppsImage)
+    const games: ElementData[] = useReactiveVar(gamesVar);
+    
+    const allGamesButton: ElementData = new ElementData(Id.allAppsButton, "All Apps", allAppsButtonImage)
 
     const gameListRef = useRef<HTMLDivElement>(null);
 
@@ -97,10 +86,10 @@ const Games = () => {
     return (
         <div className="Games">
             <div className="game-list" ref={gameListRef} {...bind()} style={{ translate: `${offset}px`, "--padding": `${paddingInVh}vh` } as React.CSSProperties}>
-                {games.map(game =>
+                {games.slice(0, 12).map(game =>
                     <Game key={game.id} data={game} dragging={dragging} onClick={handleClick}/>
                 )}
-                <AllAppsButton data={allGames} dragging={dragging} onClick={handleClick}/>
+                <AllAppsButton data={allGamesButton} dragging={dragging} onClick={handleClick}/>
             </div>
         </div>
     );
